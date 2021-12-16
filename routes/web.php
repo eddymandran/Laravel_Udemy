@@ -19,5 +19,17 @@ Route::get('/', function () {
 
 Route::get('/env', function(){
     // (Dump and Die). Permet d'afficher le contenu d'une variable à l'écran et de terminer l'exécution du programme.
-   dd(env('DB_DATABASE'));
+    dd(env('DB_DATABASE'));
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('users', function() {
+        return 'My user list';
+    });
+    Route::get('articles', function() {
+        return 'My articles list';
+    });
+    Route::get('categories', function() {
+        return 'My category list';
+    });
 });
