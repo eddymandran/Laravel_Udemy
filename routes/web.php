@@ -24,12 +24,15 @@ Route::get('/env', function(){
 
 Route::prefix('admin')->group(function () {
     Route::get('users', function() {
-        return 'My user list';
+        return response("Hello World", 200);
     });
     Route::get('articles', function() {
-        return 'My articles list';
+        return redirect('/admin/categories', 302);
     });
     Route::get('categories', function() {
-        return 'My category list';
+        return response() -> json([
+            'name'=> 'Eddy',
+            'age'=> 32
+        ]);
     });
 });
