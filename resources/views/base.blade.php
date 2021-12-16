@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    @include('navbar')
+    @include('incs.navbar')
     <!-- permet de créer un bloc 'content' qui pourra être surchargé   -->
     @yield('content')
 </body>
