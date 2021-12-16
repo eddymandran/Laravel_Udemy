@@ -17,22 +17,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/env', function(){
-    // (Dump and Die). Permet d'afficher le contenu d'une variable à l'écran et de terminer l'exécution du programme.
-    dd(env('DB_DATABASE'));
+//Route::get('/test/{id}', function ($id) {
+//    return view('test', [
+//        'id' => $id
+//    ]);
+//});
+
+Route::get('/test', function () {
+    return view('test');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::get('users', function() {
-        return response("Hello World", 200);
-    });
-    Route::get('articles', function() {
-        return redirect('/admin/categories', 302);
-    });
-    Route::get('categories', function() {
-        return response() -> json([
-            'name'=> 'Eddy',
-            'age'=> 32
-        ]);
-    });
+Route::get('/view', function () {
+    return view('folder.view');
 });
