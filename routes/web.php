@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/env', function(){
+    // (Dump and Die). Permet d'afficher le contenu d'une variable à l'écran et de terminer l'exécution du programme.
+   dd(env('DB_DATABASE'));
+});
