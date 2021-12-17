@@ -1,9 +1,8 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\UniqueActionController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\MainController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +13,5 @@ use \App\Http\Controllers\MainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('base');
-});
-
-Route::get('/test', [MainController::class, 'index']);
-
-Route::get('/unique', UniqueActionController::class);
 
 Route::resource('articles', ArticleController::class);
