@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -32,25 +33,9 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-        //permet de voir toutes les paramètres
-        //  dd($request -> all());
-
-        //possibilité de tester certains parametres
-
-        //la méthode utilisé
-           // if($request->isMethod('GET')){
-           //     die('Get');
-           // }
-           // die('Not GET');
-
-        //Si un champ est manquant
-            if($request->missing('name')){
-                die('Not Ok');
-            }
-            die('Ok');
-
+           $validated = $request->validate();
     }
 
     /**
