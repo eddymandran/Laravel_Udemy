@@ -23,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -34,7 +34,23 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //permet de voir toutes les paramètres
+        //  dd($request -> all());
+
+        //possibilité de tester certains parametres
+
+        //la méthode utilisé
+           // if($request->isMethod('GET')){
+           //     die('Get');
+           // }
+           // die('Not GET');
+
+        //Si un champ est manquant
+            if($request->missing('name')){
+                die('Not Ok');
+            }
+            die('Ok');
+
     }
 
     /**
