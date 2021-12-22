@@ -14,7 +14,3 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('articles', ArticleController::class);
-Route::get('/test', function () {
-    return view('test');
-})->middleware('custom.auth');
