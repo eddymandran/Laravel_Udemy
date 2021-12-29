@@ -16,3 +16,4 @@ use App\Http\Controllers\ArticleController;
 */
 
 Route::get('/', [ MainController::class, 'home']);
+Route::get('/articles', [ MainController::class, 'index']);
