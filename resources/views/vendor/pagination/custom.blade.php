@@ -1,6 +1,12 @@
 @if($paginator->hasPages())
     <ul class="pagination">
 
+        @if($paginator->onFirstPage())
+            <li class="page-item disabled"> <span class="page-link"><i class="fas fa-arrow-left"></i></span> </li>
+        @else
+            <li class="page-item"><a class="page-link" href="{{$paginator->previousPageUrl()}}" rel="prev"><i class="fas fa-arrow-left"></i></a> </li>
+        @endif
+
         @foreach( $elements as $element)
             @if( is_string($element))
                 <li class="page-item disabled"><span class="page-link">{{ $element }}</span></li>
@@ -20,5 +26,10 @@
 
             @endif
         @endforeach
+            @if($paginator->hasMorePages())
+                <li class="page-item"><a class="page-link" href="{{$paginator->nextPageUrl()}}" rel="next"><i class="fas fa-arrow-right"></i></a> </li>
+            @else
+                <li class="page-item disabled"> <span class="page-link"><i class="fas fa-arrow-right"></i></span> </li>
+            @endif
     </ul>
 @endif
