@@ -17,4 +17,12 @@ class MainController extends Controller
             'articles' => $articles
         ]);
     }
+
+    public function show($slug) {
+        $article = Article::where('slug', $slug)->firstOrFail();
+        return view("article", [
+            'article' => $article
+        ]);
+    }
+
 }

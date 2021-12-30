@@ -8,9 +8,9 @@
                 <div class="col-md-6">
                     <div class="card my-3">
                         <div class="card-body">
-                            <h5 class="card-title"> {{ $article->title }}</h5>
+                            <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->subtitle }}</p>
-                            <a href="#" class="btn btn-primary">
+                            <a href="{{ route('article', $article->slug) }}" class="btn btn-primary">
                                 Lire la suite
                                 <i class="fas fa-arrow-right"></i>
                             </a>
