@@ -14,11 +14,14 @@
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                 @if(Auth::user())
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Déconnexion</a>
+                   <form method="POST" action="{{ route('logout') }}">
+                       @csrf
+                    <button type="submit" class="btn">Déconnection</button>
+                   </form>
                 </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Me connecter</a>
+                        <a class="nav-link " href="{{ route('login') }}">Me connecter</a>
                     </li>
                 @endif
             </ul>
