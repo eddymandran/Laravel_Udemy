@@ -40,13 +40,12 @@ class ArticleControler extends Controller
     {
         $validated = $request->validated();
 
-
         Article::create([
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
             'content' => $request->input('content')
         ]);
-        return redirect()->route('articles.index');
+        return redirect()->route('articles.index')->with('success', "L'article a bien été sauvegardé !");
     }
 
     /**
