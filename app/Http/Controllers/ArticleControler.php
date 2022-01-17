@@ -12,7 +12,7 @@ class ArticleControler extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class ArticleControler extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function create()
     {
@@ -34,7 +34,7 @@ class ArticleControler extends Controller
      * Store a newly created resource in storage.
      *
      * @param App\Http\Request\ArticleRequest $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(ArticleRequest $request)
     {
@@ -48,26 +48,18 @@ class ArticleControler extends Controller
         return redirect()->route('articles.index')->with('success', "L'article a bien été sauvegardé !");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('article.edit',[
+            'article'=> $article
+        ]);
     }
 
     /**
@@ -75,11 +67,16 @@ class ArticleControler extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
-        //
+        $article->title = $request->input('title');
+        $article->subtitle = $request->input('subtitle');
+        $article->content = $request->input('content');
+        $article->save();
+
+        return redirect()->route('articles.index')->with('warning', "L'article a bien été modifié !");
     }
 
     /**
