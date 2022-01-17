@@ -7,19 +7,22 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    public function home() {
+    public function home()
+    {
         return view("home");
     }
 
-    public function index() {
+    public function index()
+    {
         $articles = Article::paginate(4);
         return view("articles", [
             'articles' => $articles
         ]);
     }
 
-    public function show($slug) {
-        $article = Article::where('slug', $slug)->firstOrFail();
+    public function show(Article $article)
+    {
+
         return view("article", [
             'article' => $article
         ]);
