@@ -8,20 +8,37 @@
             <div class="col-12">
                 <div class="form-group">
                     <label>Titre</label>
-                    <input type="text" name="title" class="form-control" placeholder="Titre de votre article"/>
+                    <input type="text" name="title" class="form-control @error('title') is-invalid @enderror "
+                           placeholder="Titre de votre article"/>
+                    @error('title')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label>Sous-titre</label>
-                    <input type="text" name="subtitle" class="form-control" placeholder="Sous-titre de votre article"/>
-                    <small class="form-text text-muted">Décrivez le contenu de votre article, le thème traitré ...</small>
+                    <input type="text" name="subtitle" class="form-control @error('subtitle') is-invalid @enderror " placeholder="Sous-titre de votre article"/>
+                    <small class="form-text text-muted">Décrivez le contenu de votre article, le thème traitré
+                        ...</small><br/>
+                    @error('subtitle')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label>Contenu</label>
-                    <textarea id="tinycme-editor" name="content" class="form-control w-100"></textarea>
+                    <textarea id="tinycme-editor" name="content" class="form-control w-100 @error('content') is-invalid @enderror "></textarea>
+                    @error('content')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
                 <script>
                     tinymce.init({

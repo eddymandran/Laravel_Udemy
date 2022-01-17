@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use function GuzzleHttp\Promise\all;
@@ -32,11 +33,14 @@ class ArticleControler extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param App\Http\Request\ArticleRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
+        $validated = $request->validated();
+
+
         Article::create([
             'title' => $request->input('title'),
             'subtitle' => $request->input('subtitle'),
