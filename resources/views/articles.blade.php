@@ -10,10 +10,10 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $article->title }}</h5>
                             <p class="card-text">{{ $article->subtitle }}</p>
-                            <a href="{{ route('article', $article->slug) }}" class="btn btn-primary">
-                                Lire la suite
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <a href="{{ route('article', $article->slug) }}" class="btn btn-primary"> Lire la suite<i class="fas fa-arrow-right"></i></a>
+                            <div>
+                                <span class="badge rounded-pill bg-dark"> {{ $article->category->label }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
