@@ -16,15 +16,16 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', [ MainController::class, 'home'])->name('home');;
-Route::get('/articles', [ MainController::class, 'index'])->name('articles');
-Route::get('/articles/{article:slug}', [ MainController::class, 'show'])->name('article');
+Route::get('/', [MainController::class, 'home'])->name('home');;
+Route::get('/articles', [MainController::class, 'index'])->name('articles');
+Route::get('/articles/{article:slug}', [MainController::class, 'show'])->name('article');
 
 Auth::routes();
 
-Route::get('/admin/articles', [ ArticleControler::class, 'index'])->middleware('admin')->name('articles.index');
-Route::get('/admin/articles/create', [ ArticleControler::class, 'create'])->middleware('admin')->name('articles.create');
-Route::post('/admin/articles/store', [ ArticleControler::class, 'store'])->middleware('admin')->name('articles.store');
-Route::delete('/admin/articles/{article}/delete', [ArticleControler::class, 'delete'])->middleware('admin')->name('articles.delete');
-Route::get('/admin/articles/{article}/edit', [ArticleControler::class, 'edit'])->middleware('admin')->name('articles.edit');
-Route::put('/admin/articles/{article}/update', [ArticleControler::class, 'update'])->middleware('admin')->name('articles.update');
+Route::prefix('admin')->middleware('admin')->group(function() {
+    Route::resource('articles', ArticleControler::class)->except([
+        'show'
+    ]);
+});
+
+
