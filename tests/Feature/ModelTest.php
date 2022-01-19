@@ -10,6 +10,9 @@ use Tests\TestCase;
 
 class ModelTest extends TestCase
 {
+
+    use RefreshDatabase;
+
     public function testValidRegistration()
     {
         $faker = Factory::create();
