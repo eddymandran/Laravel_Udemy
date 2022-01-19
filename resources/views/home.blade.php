@@ -9,7 +9,6 @@
                 your liking.</p>
             <button class="btn btn-primary btn-lg" type="button">Learn more <i class="fas fa-arrow-right"></i></button>
         </div>
-        @livewire('counter')
     </div>
 @endsection
 
