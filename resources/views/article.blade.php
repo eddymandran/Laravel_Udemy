@@ -18,6 +18,6 @@
 {{--         { !! permet l'interprétation du code !! }--}}
         <p class="text-center row justify-content-center">
             <img src="{{ Voyager::image($article->image)}}" class="w-25 my-5" />
-            {!! $article->content !!}</p>
+            {{ Markdown::parse($article->content) }}</p>
     </div>
 @endsection
