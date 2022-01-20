@@ -22,10 +22,13 @@ Route::get('/articles/{article:slug}', [MainController::class, 'show'])->name('a
 
 Auth::routes();
 
-Route::prefix('admin')->middleware('admin')->group(function() {
-    Route::resource('articles', ArticleControler::class)->except([
-        'show'
-    ]);
+//Route::prefix('admin')->middleware('admin')->group(function () {
+//    Route::resource('articles', ArticleControler::class)->except([
+//        'show'
+//    ]);
+//});
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
-
-
