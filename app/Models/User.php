@@ -14,6 +14,7 @@ class User extends \TCG\Voyager\Models\User
 
     const USER_ROLE = 'USER';
     const ADMIN_ROLE = 'ADMIN';
+    const DEFAULT_AVATAR_PATH = 'users/default.png';
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,8 @@ class User extends \TCG\Voyager\Models\User
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'avatar'
     ];
 
     /**
